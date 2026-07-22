@@ -5,7 +5,7 @@
 </head>
 <body>
 
-<h1>About Us</h1>
+<h1>I am rezwan</h1>
 
 <p>This is About Page.</p>
 
