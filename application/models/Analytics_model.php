@@ -66,4 +66,14 @@ class Analytics_model extends CI_Model
             ]);
         }
     }
+
+    // API: Get Raw Visitor History
+    public function get_page_stats($page)
+    {
+        return $this->db
+            ->where('page_name', ucfirst($page))
+            ->order_by('id', 'DESC')
+            ->get('visitor_history')
+            ->result_array();
+    }
 }
