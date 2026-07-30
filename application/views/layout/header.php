@@ -13,17 +13,17 @@
 
 <div class="container">
 
-<a class="navbar-brand" href="<?php echo site_url('pages/home'); ?>">My Website</a>
+<a class="navbar-brand" href="<?php echo site_url('home'); ?>">My Website</a>
 
 <div class="navbar-nav">
 
-<a class="nav-link" href="<?php echo site_url('pages/home'); ?>">Home</a>
+<a class="nav-link" href="<?php echo site_url('home'); ?>">Home</a>
 
-<a class="nav-link" href="<?php echo site_url('pages/about'); ?>">About</a>
+<a class="nav-link" href="<?php echo site_url('about'); ?>">About</a>
 
-<a class="nav-link" href="<?php echo site_url('pages/services'); ?>">Services</a>
+<a class="nav-link" href="<?php echo site_url('services'); ?>">Services</a>
 
-<a class="nav-link" href="<?php echo site_url('pages/contact'); ?>">Contact</a>
+<a class="nav-link" href="<?php echo site_url('contact'); ?>">Contact</a>
 
 </div>
 
