@@ -4,6 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class MY_Controller extends CI_Controller
 {
     protected $visitor_id;
+    protected $track_page = false;
 
     public function __construct()
     {
@@ -17,6 +18,10 @@ class MY_Controller extends CI_Controller
 
         $this->load->database();
         $this->load->model('Analytics_model', 'analytics');
+
+        if ($this->track_page) {
+            $this->trackPage();
+        }
     }
 
     private function initializeVisitor()
@@ -37,8 +42,12 @@ class MY_Controller extends CI_Controller
         $this->visitor_id = $visitor;
     }
 
-    protected function trackPage($page_name)
+    protected function trackPage($page_name = null)
     {
+        if ($page_name === null) {
+            $page_name = ucfirst($this->router->fetch_class());
+        }
+
         $ip = $this->input->ip_address();
 
         $this->analytics->track_page(

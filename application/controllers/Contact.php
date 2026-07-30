@@ -3,6 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Contact extends MY_Controller
 {
+    protected $track_page = true;
+
     public function __construct()
     {
         parent::__construct();
@@ -10,7 +12,6 @@ class Contact extends MY_Controller
 
     public function index()
     {
-        $this->trackPage('Contact');
         $this->load->view('contact');
     }
 }

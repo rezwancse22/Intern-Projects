@@ -3,6 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends MY_Controller
 {
+    protected $track_page = true;
+
     public function __construct()
     {
         parent::__construct();
@@ -10,7 +12,6 @@ class Home extends MY_Controller
 
     public function index()
     {
-        $this->trackPage('Home');
         $this->load->view('home');
     }
 }
