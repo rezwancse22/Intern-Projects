@@ -15,8 +15,13 @@ class Api extends CI_Controller
     {
         header('Content-Type: application/json');
 
-        $page = $this->input->get('page');
+        // Get Parameters
+        $page      = $this->input->get('page');
+        $date      = $this->input->get('date');
+        $startDate = $this->input->get('startDate');
+        $endDate   = $this->input->get('endDate');
 
+        // Page is required
         if (empty($page))
         {
             echo json_encode([
@@ -29,7 +34,19 @@ class Api extends CI_Controller
             return;
         }
 
-        $result = $this->Analytics_model->get_page_stats($page);
+        // Automatically add "/" if user writes Home instead of /home
+        if (substr($page, 0, 1) !== '/')
+        {
+            $page = '/' . strtolower($page);
+        }
+
+        // Get Statistics
+        $result = $this->Analytics_model->get_page_stats(
+            $page,
+            $date,
+            $startDate,
+            $endDate
+        );
 
         echo json_encode($result, JSON_PRETTY_PRINT);
     }

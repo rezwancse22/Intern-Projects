@@ -19,7 +19,8 @@ class MY_Controller extends CI_Controller
         $this->load->database();
         $this->load->model('Analytics_model', 'analytics');
 
-        if ($this->track_page) {
+        if ($this->track_page)
+        {
             $this->trackPage();
         }
     }
@@ -28,13 +29,14 @@ class MY_Controller extends CI_Controller
     {
         $visitor = get_cookie('analytics_visitor_id');
 
-        if (!$visitor) {
+        if (!$visitor)
+        {
             $visitor = uniqid('visitor_', true);
 
             set_cookie([
                 'name'     => 'analytics_visitor_id',
                 'value'    => $visitor,
-                'expire'   => 31536000,
+                'expire'   => 31536000, // 1 Year
                 'httponly' => TRUE
             ]);
         }
@@ -42,9 +44,19 @@ class MY_Controller extends CI_Controller
         $this->visitor_id = $visitor;
     }
 
+    /**
+     * Track Current Page
+     *
+     * Examples:
+     * Home     -> /home
+     * About    -> /about
+     * Contact  -> /contact
+     * Services -> /services
+     */
     protected function trackPage($page_name = null)
     {
-        if ($page_name === null) {
+        if ($page_name === null)
+        {
             $page_name = ucfirst($this->router->fetch_class());
         }
 
