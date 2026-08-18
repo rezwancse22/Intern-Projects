@@ -9,6 +9,7 @@ class Analytics_model extends CI_Model
     }
 public function track_page($visitor_id, $page_name, $ip_address)
 {
+    date_default_timezone_set('Asia/Dhaka');
     $today = date('Y-m-d');
     $time  = date('H:i:s');
 
