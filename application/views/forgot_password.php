@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,48 +37,64 @@
 
         <!-- FORM -->
 
-        <form action="<?php echo base_url('index.php/Reset_password'); ?>" method="post">
+        <form action="<?php echo base_url('index.php/Forgot_password'); ?>" method="post">
 
-    <div class="input-group">
-        <label for="email">Email Address</label>
+            <div class="input-group">
 
-        <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="Enter your registered email address"
-            required>
-    </div>
+                <label for="email">
+                    Email Address
+                </label>
 
-    <button type="submit" class="enter-btn">
-        Enter
-    </button>
-
-</form>
-
-
-            
-
-            
-
-            <!-- BACK TO LOGIN -->
-
-            <div class="back-login">
-
-                <span>
-                    Remember your password?
-                </span>
-
-                <a href="<?php echo base_url('index.php/login'); ?>">
-
-                    Login Here
-
-                </a>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your registered email address"
+                    required>
 
             </div>
 
 
+            <!-- ENTER BUTTON -->
+
+            <button type="submit" class="enter-btn">
+
+                Enter
+
+            </button>
+
+
+            <!-- ERROR MESSAGE -->
+
+            <?php if ($this->session->flashdata('error')): ?>
+
+                <div class="error-message">
+
+                    <?php echo $this->session->flashdata('error'); ?>
+
+                </div>
+
+            <?php endif; ?>
+
+
         </form>
+
+
+        <!-- BACK TO LOGIN -->
+
+        <div class="back-login">
+
+            <span>
+                Remember your password?
+            </span>
+
+            <a href="<?php echo base_url('index.php/login'); ?>">
+
+                Login Here
+
+            </a>
+
+        </div>
 
 
     </div>
