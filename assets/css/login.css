@@ -427,3 +427,11 @@ body {
     }
 
 }
+
+.login-error {
+    margin-top: 15px;
+    text-align: center;
+    color: #d9534f;
+    font-size: 15px;
+    font-weight: 600;
+}

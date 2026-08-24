@@ -7,19 +7,71 @@ class Login extends CI_Controller
     {
         parent::__construct();
 
-        // URL Helper load
-        $this->load->helper('url');
+        $this->load->database();
+        $this->load->library('session');
     }
 
-    // Login Page
+
     public function index()
     {
-        $this->load->view('login');
-    }
+        // শুধু Login page open করলে
+        if ($this->input->method() === 'get') {
 
-    // Temporary Dashboard Page
-    public function dashboard()
-    {
-        $this->load->view('dashboard');
+            $this->load->view('login');
+            return;
+        }
+
+
+        // Form থেকে Email এবং Password নেওয়া
+        $email = $this->input->post('email');
+        $password = $this->input->post('password');
+
+
+        // Email দিয়ে user খোঁজা
+        $user = $this->db
+            ->where('email', $email)
+            ->get('users')
+            ->row();
+
+
+        // Email পাওয়া না গেলে
+                    if (!$user) {
+
+                $this->session->set_flashdata(
+                    'error',
+                    'Email not found!'
+                );
+
+                redirect('Login');
+                return;
+            }
+
+
+        // Password verify
+        if (!password_verify($password, $user->password)) {
+
+            $this->session->set_flashdata(
+                'error',
+                'Incorrect password!'
+            );
+
+            redirect('Login');
+            return;
+        }
+
+
+        // Login successful হলে Session তৈরি
+        $this->session->set_userdata(array(
+
+            'user_id'   => $user->id,
+            'full_name' => $user->full_name,
+            'email'     => $user->email,
+            'logged_in' => TRUE
+
+        ));
+
+
+        // Dashboard এ পাঠানো
+        redirect('dashboard');
     }
 }

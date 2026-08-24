@@ -39,7 +39,7 @@
 
         <!-- REGISTER FORM -->
 
-        <form action="#" method="post">
+        <form action="<?php echo base_url('index.php/Register'); ?>" method="post">
 
 
             <!-- FULL NAME -->
@@ -53,27 +53,26 @@
                 <input
                     type="text"
                     id="name"
-                    name="name"
+                    name="full_name"
                     placeholder="Enter your full name"
                     required>
 
             </div>
 
 
-
             <!-- DATE OF BIRTH -->
-
+            
             <div class="input-group">
 
-                <label for="dob">
-                    Date of Birth
-                </label>
+            <label for="dob">
+        Date of Birth
+            </label>
 
-                <input
-                    type="date"
-                    id="dob"
-                    name="dob"
-                    required>
+            <input 
+        type="date" 
+        id="dob" 
+        name="date_of_birth"
+        required>
 
             </div>
 
@@ -87,12 +86,16 @@
                     Phone Number
                 </label>
 
-                <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    placeholder="Enter your 11 digit phone number"
-                    required>
+                <input 
+                         type="tel"
+                           id="phone"
+                          name="phone"
+                         placeholder="Enter your 11 digit phone number"
+                         required
+                             maxlength="11"
+                        pattern="[0-9]{11}"
+                         inputmode="numeric"
+                         oninput="this.value = this.value.replace(/[^0-9]/g, '')">
 
             </div>
 
@@ -132,7 +135,11 @@
                         id="password"
                         name="password"
                         placeholder="Enter your password"
-                        required>
+                        required
+                    
+                         minlength="8"
+                         pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%&*]).{8,}"
+                         title="Password must contain at least 8 characters, including uppercase, lowercase, number, and one symbol (!,@,#,$,%,&,*)">
 
                     <span
                         class="password-toggle"
@@ -163,7 +170,9 @@
                         id="confirm_password"
                         name="confirm_password"
                         placeholder="Rewrite your password"
-                        required>
+                        required
+                         title="Password must contain at least 8 characters, including uppercase, lowercase, number, and one symbol (!,@,#,$,%,&,*)">
+
 
                     <span
                         class="password-toggle"
