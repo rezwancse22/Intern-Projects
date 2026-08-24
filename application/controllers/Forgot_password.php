@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Forgot_password extends CI_Controller
+class Forgot_password extends MY_Controller
 {
     public function __construct()
     {
@@ -16,6 +16,9 @@ class Forgot_password extends CI_Controller
     {
         // শুধু page open করলে
         if ($this->input->method() === 'get') {
+
+            // Forgot Password page analytics track
+            $this->trackPage('Forgot Password');
 
             $this->load->view('forgot_password');
             return;

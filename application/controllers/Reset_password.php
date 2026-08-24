@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Reset_password extends CI_Controller
+class Reset_password extends MY_Controller
 {
     public function __construct()
     {
@@ -23,6 +23,9 @@ class Reset_password extends CI_Controller
                 redirect('Forgot_password');
                 return;
             }
+
+            // Reset Password page analytics track
+            $this->trackPage('Reset Password');
 
             $this->load->view('reset_password');
             return;

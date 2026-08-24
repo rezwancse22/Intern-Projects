@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Register extends CI_Controller
+class Register extends MY_Controller
 {
     public function __construct()
     {
@@ -15,6 +15,9 @@ class Register extends CI_Controller
     {
         // যদি শুধু Register page open করা হয়
         if ($this->input->method() === 'get') {
+
+            // Register page analytics track
+            $this->trackPage('Register');
 
             $this->load->view('register');
             return;
