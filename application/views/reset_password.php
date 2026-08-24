@@ -19,7 +19,6 @@
 
 <div class="reset-password-page">
 
-
     <div class="reset-password-card">
 
 
@@ -38,7 +37,7 @@
 
         <!-- RESET PASSWORD FORM -->
 
-        <form action="#" method="post">
+        <form action="<?php echo base_url('index.php/Reset_password'); ?>" method="post">
 
 
             <!-- NEW PASSWORD -->
@@ -59,7 +58,10 @@
                         id="new_password"
                         name="new_password"
                         placeholder="Enter your new password"
-                        required>
+                        required
+                        minlength="8"
+                        pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%&*]).{8,}"
+                        title="Password must contain at least 8 characters, including uppercase, lowercase, number, and one symbol (!,@,#,$,%,&,*)">
 
 
                     <span
@@ -93,7 +95,10 @@
                         id="confirm_password"
                         name="confirm_password"
                         placeholder="Rewrite your new password"
-                        required>
+                        required
+                        minlength="8"
+                        pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%&*]).{8,}"
+                        title="Password must contain at least 8 characters, including uppercase, lowercase, number, and one symbol (!,@,#,$,%,&,*)">
 
 
                     <span
@@ -107,6 +112,19 @@
                 </div>
 
             </div>
+
+
+            <!-- ERROR MESSAGE -->
+
+            <?php if ($this->session->flashdata('error')): ?>
+
+                <div class="error-message">
+
+                    <?php echo $this->session->flashdata('error'); ?>
+
+                </div>
+
+            <?php endif; ?>
 
 
             <!-- RESET BUTTON -->
@@ -141,7 +159,6 @@
 
 
     </div>
-
 
 </div>
 
