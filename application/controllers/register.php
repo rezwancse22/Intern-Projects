@@ -8,6 +8,7 @@ class Register extends MY_Controller
         parent::__construct();
 
         $this->load->database();
+        $this->load->library('session');
     }
 
 
@@ -36,7 +37,12 @@ class Register extends MY_Controller
         // Password দুইটা same কিনা check
         if ($password !== $confirm_password) {
 
-            echo "Password does not match!";
+            $this->session->set_flashdata(
+                'error',
+                'Password does not match!'
+            );
+
+            redirect('register');
             return;
         }
 
@@ -50,7 +56,12 @@ class Register extends MY_Controller
 
         if ($existing_email) {
 
-            echo "This email is already registered!";
+            $this->session->set_flashdata(
+                'error',
+                'This email is already registered!'
+            );
+
+            redirect('register');
             return;
         }
 
@@ -64,7 +75,12 @@ class Register extends MY_Controller
 
         if ($existing_phone) {
 
-            echo "This phone number is already registered!";
+            $this->session->set_flashdata(
+                'error',
+                'This phone number is already registered!'
+            );
+
+            redirect('register');
             return;
         }
 
@@ -92,7 +108,14 @@ class Register extends MY_Controller
         $this->db->insert('users', $data);
 
 
-        // সফল হলে Login page এ পাঠাবে
+        // সফল হলে Login page এ success message
+        $this->session->set_flashdata(
+            'success',
+            'Registration successful! Please login.'
+        );
+
+
+        // Login page এ পাঠাবে
         redirect('login');
     }
 }

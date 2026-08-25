@@ -35,14 +35,14 @@ class Dashboard_model extends CI_Model
     |--------------------------------------------------------------------------
     */
 
-        public function get_unique_visitors()
-        {
-            return $this->db
-                ->distinct()
-                ->select('ip_address')
-                ->from('visitor_tracking')
-                ->count_all_results();
-        }
+    public function get_unique_visitors()
+    {
+        return $this->db
+            ->distinct()
+            ->select('ip_address')
+            ->from('visitor_tracking')
+            ->count_all_results();
+    }
 
 
     /*
@@ -121,6 +121,37 @@ class Dashboard_model extends CI_Model
             ->order_by('id', 'DESC')
             ->limit(50)
             ->get('visitor_history')
+            ->result();
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Login History
+    |--------------------------------------------------------------------------
+    */
+
+    public function get_login_history()
+    {
+        return $this->db
+            ->select('
+                login_history.id,
+                login_history.user_id,
+                login_history.ip_address,
+                login_history.login_date,
+                login_history.login_time,
+                users.full_name,
+                users.email
+            ')
+            ->from('login_history')
+            ->join(
+                'users',
+                'users.id = login_history.user_id',
+                'left'
+            )
+            ->order_by('login_history.id', 'DESC')
+            ->limit(100)
+            ->get()
             ->result();
     }
 

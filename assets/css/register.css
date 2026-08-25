@@ -12,7 +12,7 @@ body {
 }
 
 
-/* পুরো page-এর মাঝখানে card */
+
 
 .register-page {
     min-height: 100vh;
@@ -217,5 +217,19 @@ body {
     .register-card {
         padding: 35px 25px;
     }
+
+}
+
+.register-error
+
+{
+
+    text-align: center;
+
+    color: #b42318;
+
+    font-weight: bold;
+
+    margin-top: 15px;
 
 }
