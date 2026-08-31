@@ -78,26 +78,26 @@
 
 
 
-            <!-- PHONE NUMBER -->
+                    <!-- PHONE NUMBER -->
 
-            <div class="input-group">
+                    <div class="input-group">
 
-                <label for="phone">
-                    Phone Number
-                </label>
+                        <label for="phone">
+                            Phone Number
+                        </label>
 
-                <input 
-                         type="tel"
-                           id="phone"
-                          name="phone"
-                         placeholder="Enter your 11 digit phone number"
-                         required
-                             maxlength="11"
-                        pattern="[0-9]{11}"
-                         inputmode="numeric"
-                         oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                        <input 
+                                type="tel"
+                                id="phone"
+                                name="phone"
+                                placeholder="Enter your 11 digit phone number"
+                                required
+                                    maxlength="11"
+                                pattern="[0-9]{11}"
+                                inputmode="numeric"
+                                oninput="this.value = this.value.replace(/[^0-9]/g, '')">
 
-            </div>
+                    </div>
 
 
 
@@ -190,18 +190,29 @@
 
             <!-- REGISTER BUTTON -->
 
-            <button
-                type="submit"
-                class="register-submit">
+                <button
+                    type="submit"
+                    class="register-submit">
 
-                Register
+                    Register
 
-            </button>
+                </button>
 
 
+                <?php if ($this->session->flashdata('error')) { ?>
 
-            <!-- LOGIN LINK -->
+                    <div class="register-error">
 
+                        <?php
+                        echo $this->session->flashdata('error');
+                        ?>
+
+                    </div>
+
+                <?php } ?>
+
+
+                <!-- LOGIN LINK -->
             <div class="login-link">
 
                 <span>
@@ -212,48 +223,48 @@
 
                     Login Here
 
-                </a>
+                                </a>
 
-            </div>
-
-
-        </form>
+                            </div>
 
 
-    </div>
+                        </form>
 
 
-</div>
+                    </div>
+
+
+                </div>
 
 
 
-<script>
+                <script>
 
-    function togglePassword(inputId, icon) {
+                    function togglePassword(inputId, icon) {
 
-        const passwordInput =
-            document.getElementById(inputId);
-
-
-        if (passwordInput.type === "password") {
-
-            passwordInput.type = "text";
-
-            icon.textContent = "🙈";
-
-        } else {
-
-            passwordInput.type = "password";
-
-            icon.textContent = "👁️";
-
-        }
-
-    }
-
-</script>
+                        const passwordInput =
+                            document.getElementById(inputId);
 
 
-</body>
+                        if (passwordInput.type === "password") {
 
-</html>
+                            passwordInput.type = "text";
+
+                            icon.textContent = "🙈";
+
+                        } else {
+
+                            passwordInput.type = "password";
+
+                            icon.textContent = "👁️";
+
+                        }
+
+                    }
+
+                </script>
+
+
+                </body>
+
+                </html>

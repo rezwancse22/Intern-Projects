@@ -14,7 +14,7 @@ class Register extends MY_Controller
 
     public function index()
     {
-        // যদি শুধু Register page open করা হয়
+        
         if ($this->input->method() === 'get') {
 
             // Register page analytics track
