@@ -695,3 +695,283 @@ table tr:hover {
     }
 
 }
+
+
+/* =====================================================
+   NOTICES SECTION
+===================================================== */
+
+.notice-upload-box {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 25px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+}
+
+
+.notice-upload-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+
+.notice-upload-info h3 {
+    margin: 0 0 5px 0;
+    font-size: 18px;
+    color: #1e293b;
+}
+
+
+.notice-upload-info p {
+    margin: 0;
+    color: #64748b;
+    font-size: 14px;
+}
+
+
+.pdf-icon {
+    width: 48px;
+    height: 48px;
+    background: #f1f5f9;
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 24px;
+    flex-shrink: 0;
+}
+
+
+.notice-upload-form {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+
+.notice-upload-form input[type="file"] {
+    flex: 1;
+
+    min-width: 250px;
+
+    padding: 11px 12px;
+
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+
+    background: #f8fafc;
+
+    font-size: 14px;
+
+    cursor: pointer;
+}
+
+
+.notice-upload-form input[type="file"]:hover {
+    border-color: #94a3b8;
+}
+
+
+.notice-upload-form .filter-btn {
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+
+
+/* =====================================================
+   NOTICE LIST
+===================================================== */
+
+.notice-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+
+.notice-item {
+    background: #ffffff;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 12px;
+
+    padding: 18px 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    transition: 0.2s ease;
+}
+
+
+.notice-item:hover {
+    border-color: #cbd5e1;
+
+    box-shadow:
+        0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+
+.notice-item-left {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    min-width: 0;
+}
+
+
+.notice-details {
+    min-width: 0;
+}
+
+
+.notice-details h3 {
+    margin: 0 0 6px 0;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    color: #1e293b;
+}
+
+
+.notice-details p {
+    margin: 0 0 6px 0;
+
+    color: #64748b;
+
+    font-size: 13px;
+}
+
+
+.notice-details small {
+    color: #94a3b8;
+
+    font-size: 12px;
+}
+
+
+.notice-item-right {
+    flex-shrink: 0;
+}
+
+
+.notice-item-right .filter-btn {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-decoration: none;
+
+    white-space: nowrap;
+}
+
+
+
+/* =====================================================
+   SUCCESS MESSAGE
+===================================================== */
+
+.notice-success {
+    background: #ecfdf5;
+
+    color: #047857;
+
+    border: 1px solid #a7f3d0;
+
+    border-radius: 8px;
+
+    padding: 12px 15px;
+
+    margin-bottom: 18px;
+
+    font-size: 14px;
+}
+
+
+
+/* =====================================================
+   ERROR MESSAGE
+===================================================== */
+
+.notice-error {
+    background: #fef2f2;
+
+    color: #b91c1c;
+
+    border: 1px solid #fecaca;
+
+    border-radius: 8px;
+
+    padding: 12px 15px;
+
+    margin-bottom: 18px;
+
+    font-size: 14px;
+}
+
+
+
+/* =====================================================
+   NOTICE RESPONSIVE
+===================================================== */
+
+@media (max-width: 768px) {
+
+    .notice-item {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+
+    .notice-item-right {
+        width: 100%;
+    }
+
+
+    .notice-item-right .filter-btn {
+        width: 100%;
+    }
+
+
+    .notice-upload-form {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+
+    .notice-upload-form input[type="file"] {
+        width: 100%;
+
+        min-width: 0;
+    }
+
+
+    .notice-upload-form .filter-btn {
+        width: 100%;
+    }
+
+}

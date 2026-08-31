@@ -1664,31 +1664,231 @@
 
 
 
+
+
         <!-- =================================================
-             NOTICES
+     NOTICES
+================================================= -->
+
+<div
+    id="notices"
+    class="dashboard-section">
+
+
+    <div class="table-section">
+
+
+        <h2>
+            Notices
+        </h2>
+
+
+        <!-- =================================================
+             SUCCESS MESSAGE
         ================================================= -->
 
-        <div
-            id="notices"
-            class="dashboard-section">
+        <?php if ($this->session->flashdata('upload_success')): ?>
+
+            <div class="notice-success">
+
+                <?php
+                echo htmlspecialchars(
+                    $this->session->flashdata('upload_success')
+                );
+                ?>
+
+            </div>
+
+        <?php endif; ?>
 
 
-            <div class="table-section">
+        <!-- =================================================
+             ERROR MESSAGE
+        ================================================= -->
+
+        <?php if ($this->session->flashdata('upload_error')): ?>
+
+            <div class="notice-error">
+
+                <?php
+                echo htmlspecialchars(
+                    $this->session->flashdata('upload_error')
+                );
+                ?>
+
+            </div>
+
+        <?php endif; ?>
 
 
-                <h2>
-                    Notices
-                </h2>
+        <!-- =================================================
+             UPLOAD NOTICE
+        ================================================= -->
+
+        <div class="notice-upload-box">
+
+
+            <div class="notice-upload-info">
+
+                <div class="pdf-icon">
+                    📄
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        Upload New Notice
+                    </h3>
+
+                    <p>
+                        Select a PDF document to publish a new official notice.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <form
+                action="<?php echo base_url('index.php/dashboard/upload_notice'); ?>"
+                method="POST"
+                enctype="multipart/form-data"
+                class="notice-upload-form">
+
+
+                <input
+                    type="file"
+                    name="notice_pdf"
+                    accept="application/pdf"
+                    required>
+
+
+                <button
+                    type="submit"
+                    class="filter-btn">
+
+                    ⬆ Upload PDF
+
+                </button>
+
+
+            </form>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             UPLOADED NOTICES
+        ================================================= -->
+
+        <div class="notice-list">
+
+
+            <?php if (!empty($notices)): ?>
+
+
+                <?php foreach ($notices as $notice): ?>
+
+
+                    <div class="notice-item">
+
+
+                        <div class="notice-item-left">
+
+
+                            <div class="pdf-icon">
+                                📄
+                            </div>
+
+
+                            <div class="notice-details">
+
+
+                                <h3>
+
+                                    <?php
+
+                                    echo htmlspecialchars(
+                                        $notice->title
+                                    );
+
+                                    ?>
+
+                                </h3>
+
+
+                                <p>
+
+                                    <?php
+
+                                    echo htmlspecialchars(
+                                        $notice->description
+                                    );
+
+                                    ?>
+
+                                </p>
+
+
+                                <small>
+
+                                    <?php
+
+                                    echo htmlspecialchars(
+                                        $notice->notice_date
+                                    );
+
+                                    ?>
+
+                                </small>
+
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <div class="notice-item-right">
+
+
+                            <a
+                                href="<?php echo base_url('assets/uploads/notices/' . $notice->pdf_file); ?>"
+                                target="_blank"
+                                class="filter-btn">
+
+
+                                👁 Read PDF
+
+
+                            </a>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                <?php endforeach; ?>
+
+
+            <?php else: ?>
 
 
                 <p class="empty-data">
 
-                    Notice management will be added here.
+                    No notices uploaded yet.
 
                 </p>
 
 
-            </div>
+            <?php endif; ?>
 
 
         </div>
@@ -1696,10 +1896,8 @@
 
     </div>
 
+
 </div>
-
-
-
 <!-- =====================================================
      SIDEBAR JAVASCRIPT
 ===================================================== -->

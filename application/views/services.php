@@ -77,9 +77,11 @@
         </a>
 
 
-        <a href="#">
-            Notices
-        </a>
+                    <a
+                href="<?php echo base_url('index.php/notices'); ?>"
+            >
+                Notices
+            </a>
 
 
         <a href="<?php echo base_url('index.php/contact'); ?>">

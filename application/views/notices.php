@@ -152,66 +152,7 @@
 
 
 
-        <!-- =========================================
-             PDF UPLOAD SECTION
-        ========================================= -->
-
-        <div class="upload-card">
-
-            <div class="upload-left">
-
-
-                <div class="upload-icon">
-
-                    <i class="fa-solid fa-file-pdf"></i>
-
-                </div>
-
-
-                <div>
-
-                    <h3>
-                        Upload New Notice
-                    </h3>
-
-                    <p>
-                        Select a PDF document to publish
-                        a new official notice.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <form
-                action="#"
-                method="POST"
-                enctype="multipart/form-data"
-                class="upload-form">
-
-
-                <input
-                    type="file"
-                    name="notice_pdf"
-                    accept=".pdf">
-
-
-                <button
-                    type="submit"
-                    class="upload-btn">
-
-                    <i class="fa-solid fa-upload"></i>
-
-                    Upload PDF
-
-                </button>
-
-            </form>
-
-        </div>
-
-
+    
 
         <!-- =========================================
              NOTICE LIST
@@ -263,7 +204,7 @@
 
                         <i class="fa-solid fa-eye"></i>
 
-                        Read PDF
+                        View PDF
 
                     </a>
 
@@ -316,7 +257,7 @@
 
                         <i class="fa-solid fa-eye"></i>
 
-                        Read PDF
+                        View PDF
 
                     </a>
 
@@ -369,7 +310,7 @@
 
                         <i class="fa-solid fa-eye"></i>
 
-                        Read PDF
+                        View PDF
 
                     </a>
 

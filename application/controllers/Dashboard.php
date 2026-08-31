@@ -81,6 +81,10 @@ class Dashboard extends CI_Controller
         $data['login_history'] =
             $this->dashboard->get_login_history();
 
+        // notices table
+        $data['notices'] =
+            $this->dashboard->get_notices();
+
 
         /*
         |----------------------------------------------------------------------
@@ -92,5 +96,161 @@ class Dashboard extends CI_Controller
             'dashboard',
             $data
         );
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Upload Notice PDF
+    |--------------------------------------------------------------------------
+    */
+
+    public function upload_notice()
+    {
+        if (!$this->session->userdata('logged_in')) {
+
+            redirect('Login');
+            return;
+        }
+
+
+        /*
+        |----------------------------------------------------------------------
+        | Check PDF
+        |----------------------------------------------------------------------
+        */
+
+        if (empty($_FILES['notice_pdf']['name'])) {
+
+            $this->session->set_flashdata(
+                'upload_error',
+                'Please select a PDF file.'
+            );
+
+            redirect('dashboard');
+            return;
+        }
+
+
+        /*
+        |----------------------------------------------------------------------
+        | Upload Folder
+        |----------------------------------------------------------------------
+        */
+
+        $upload_path =
+            FCPATH . 'assets/uploads/notices/';
+
+
+        if (!is_dir($upload_path)) {
+
+            mkdir(
+                $upload_path,
+                0777,
+                true
+            );
+        }
+
+
+        /*
+        |----------------------------------------------------------------------
+        | Upload Configuration
+        |----------------------------------------------------------------------
+        */
+
+        $config['upload_path'] =
+            $upload_path;
+
+        $config['allowed_types'] =
+            'pdf';
+
+        $config['max_size'] =
+            10240;
+
+        $config['encrypt_name'] =
+            TRUE;
+
+
+        $this->load->library(
+            'upload',
+            $config
+        );
+
+
+        /*
+        |----------------------------------------------------------------------
+        | Upload File
+        |----------------------------------------------------------------------
+        */
+
+        if (!$this->upload->do_upload('notice_pdf')) {
+
+            $this->session->set_flashdata(
+                'upload_error',
+                $this->upload->display_errors()
+            );
+
+            redirect('dashboard');
+            return;
+        }
+
+
+        /*
+        |----------------------------------------------------------------------
+        | Uploaded File Information
+        |----------------------------------------------------------------------
+        */
+
+        $file_data =
+            $this->upload->data();
+
+
+        /*
+        |----------------------------------------------------------------------
+        | Notice Database Data
+        |----------------------------------------------------------------------
+        */
+
+        $notice_data = array(
+
+            'title' =>
+                $this->input->post('title'),
+
+            'description' =>
+                $this->input->post('description'),
+
+            'pdf_file' =>
+                $file_data['file_name'],
+
+            'notice_date' =>
+                date('Y-m-d')
+
+        );
+
+
+        /*
+        |----------------------------------------------------------------------
+        | Insert Into Database
+        |----------------------------------------------------------------------
+        */
+
+        $this->dashboard->insert_notice(
+            $notice_data
+        );
+
+
+        /*
+        |----------------------------------------------------------------------
+        | Success Message
+        |----------------------------------------------------------------------
+        */
+
+        $this->session->set_flashdata(
+            'upload_success',
+            'Notice uploaded successfully.'
+        );
+
+
+        redirect('dashboard');
     }
 }

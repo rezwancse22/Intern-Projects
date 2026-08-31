@@ -170,4 +170,33 @@ class Dashboard_model extends CI_Model
             ->get('users')
             ->result();
     }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Notices
+    |--------------------------------------------------------------------------
+    */
+
+    public function get_notices()
+    {
+        return $this->db
+            ->order_by('notice_date', 'DESC')
+            ->order_by('id', 'DESC')
+            ->get('notices')
+            ->result();
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Insert Notice
+    |--------------------------------------------------------------------------
+    */
+
+    public function insert_notice($data)
+    {
+        return $this->db
+            ->insert('notices', $data);
+    }
 }
